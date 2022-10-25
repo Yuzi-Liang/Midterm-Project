@@ -80,7 +80,7 @@ Each team will present their findings and results in the class on Wednesday 11/0
 
 - Best model and best features
 
-- Results, findings, and Learnings
+- Results, Findings, and Learnings
 
  
 
