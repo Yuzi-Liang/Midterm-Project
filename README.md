@@ -72,7 +72,7 @@ Each team will present their findings and results in the class on Wednesday 11/0
 
 - Preprocessing and data cleaning (if needed)
 
-- Feature transformation (e.g., log transformation) (if needed)
+- Feature transformation (e.g. log transformation) (if needed)
 
 - Encoding categorical features and in particular features with high cardinality
 
