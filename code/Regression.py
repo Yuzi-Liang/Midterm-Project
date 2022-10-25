@@ -39,15 +39,16 @@ def RSE(y_true, y_predicted):
 
 dftrain = pd.read_csv('../data/kc_house_data.csv')
 
-popList = ['id', 'date']
+popList = ['id', 'date', 'zipcode', 'yr_renovated', 'lat', 'long']
 for id in popList:
     dftrain.pop(id)
 
 Y = dftrain.pop('price')
 X = sm.add_constant(dftrain)
 
-est = OLSFit(X,Y)
+est = OLSFit(X, Y)
 Y_predict = est.predict(X)
 print(est.summary())
-plt.scatter(Y, Y_predict, s=1)
+plt.scatter(Y, Y_predict, s=0.5)
+plt.plot(Y, Y, c='r')
 plt.show()
