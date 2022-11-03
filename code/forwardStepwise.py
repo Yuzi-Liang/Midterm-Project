@@ -13,6 +13,7 @@ predictor_list = ['id', 'date', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lo
        'sqft_living15', 'sqft_lot15']
 
 sorted_list = []
+R2_list =[]
 
 for step in range(1, len(predictor_list)):
     R2 = [0] * len(predictor_list)
@@ -31,7 +32,13 @@ for step in range(1, len(predictor_list)):
         sorted_list.pop(-1)
 
     max_index, max_number = max(enumerate(R2), key=operator.itemgetter(1))
+
     sorted_list.append(predictor_list[max_index])
+    R2_list.append(max_number)
+
+print(sorted_list)
+print(R2_list)
+
 
 
 
