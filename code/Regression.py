@@ -36,21 +36,19 @@ def RSE(y_true, y_predicted):
     rse = math.sqrt(rss / (len(y_true) - 2))
     return rse
 
-# dftrain = pd.read_csv('../data/training_dataset-2.csv')
-# dftest = pd.read_csv('../data/test_dataset-2.csv')
+if __name__ == '__main__':
+    dftrain = pd.read_csv('../data/training_dataset.csv')
 
-dftrain = pd.read_csv('../data/kc_house_data.csv')
+    popList = ['id', 'date', 'zipcode', 'yr_renovated', 'lat', 'long']
+    for id in popList:
+        dftrain.pop(id)
 
-popList = ['id', 'date', 'zipcode', 'yr_renovated', 'lat', 'long']
-for id in popList:
-    dftrain.pop(id)
+    Y = dftrain.pop('price')
+    X = sm.add_constant(dftrain)
 
-Y = dftrain.pop('price')
-X = sm.add_constant(dftrain)
-
-est = OLSFit(X, Y)
-Y_predict = est.predict(X)
-print(est.summary())
-plt.scatter(Y, Y_predict, s=0.5)
-plt.plot(Y, Y, c='r')
-plt.show()
+    est = OLSFit(X, Y)
+    Y_predict = est.predict(X)
+    print(est.summary())
+    plt.scatter(Y, Y_predict, s=0.5)
+    plt.plot(Y, Y, c='r')
+    plt.show()

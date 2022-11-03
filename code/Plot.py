@@ -5,7 +5,7 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-dftrain = pd.read_csv('../data/kc_house_data.csv')
+dftrain = pd.read_csv('../data/training_dataset.csv')
 dftrain['date'] = dateProcess.dateConvert(dftrain['date'])
 predictor_list = ['id', 'date', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot',
        'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above',
