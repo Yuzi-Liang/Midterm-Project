@@ -57,8 +57,5 @@ for step in range(1, len(predictor_list)):
 print(sorted_list)
 print(R2_list)
 
-print(len(sorted_list))
-print(len(R2_list))
-
 
 
