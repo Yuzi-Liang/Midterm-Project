@@ -36,9 +36,13 @@ for step in range(1, len(predictor_list)):
     sorted_list.append(predictor_list[max_index])
     R2_list.append(max_number)
 
+
+
 print(sorted_list)
 print(R2_list)
 
+print(len(sorted_list))
+print(len(R2_list))
 
 
 
