@@ -5,7 +5,7 @@ import numpy as np
 import statsmodels.api as sm
 import math
 import matplotlib
-matplotlib.use('TkAgg')
+# matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 def OLSFit(X, Y):
@@ -52,3 +52,19 @@ if __name__ == '__main__':
     plt.scatter(Y, Y_predict, s=0.5)
     plt.plot(Y, Y, c='r')
     plt.show()
+
+    # export the .csv file
+    dftest = pd.read_csv('../data/test_dataset.csv')
+    testPopList = ['id', 'date', 'zipcode', 'yr_renovated', 'lat', 'long']
+    for element in popList:
+        dftest.pop(element)
+    dftest = sm.add_constant(dftest)
+    predict = est.predict(dftest)
+
+    dfOutputTest = pd.read_csv('../data/test_dataset.csv')
+    temp = []
+    for each in predict:
+        temp.append(each)
+    dfOutputTest['price'] = temp
+    dfOutputTest = dfOutputTest[['id', 'price']]
+    dfOutputTest.to_csv('PredictPrice.csv', index=False)
