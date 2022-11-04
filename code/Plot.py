@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 
 dftrain = pd.read_csv('../data/training_dataset.csv')
 dftrain['date'] = dateProcess.dateConvert(dftrain['date'])
+for i in range(0, len(dftrain['sqft_lot'])):
+    dftrain['sqft_lot'][i] = 1/dftrain['sqft_lot'][i]
 
 describe = dftrain.describe()
 describe.to_csv('summary.csv')

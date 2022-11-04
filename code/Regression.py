@@ -5,7 +5,7 @@ import numpy as np
 import statsmodels.api as sm
 import math
 import matplotlib
-# matplotlib.use('TkAgg')
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 def OLSFit(X, Y):
@@ -38,6 +38,9 @@ def RSE(y_true, y_predicted):
 
 if __name__ == '__main__':
     dftrain = pd.read_csv('../data/training_dataset.csv')
+
+    for i in range(0, len(dftrain['sqft_lot'])):
+        dftrain['sqft_lot'][i] = 1 / dftrain['sqft_lot'][i]
 
     popList = ['id', 'date', 'zipcode', 'yr_renovated', 'lat', 'long']
     for id in popList:
