@@ -11,4 +11,4 @@ def dateConvert(date_frame):
     for i in range(0, len(date_frame)):
         date_frame[i] = datetime.strptime(date_frame[i], "%Y%m%dT000000") - date0
         date_frame[i] = date_frame[i].days
-    return date_frame
+    return date_frame.astype(float)
