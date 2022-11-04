@@ -2,7 +2,7 @@ import dateProcess
 
 import pandas as pd
 import matplotlib
-# matplotlib.use('TkAgg')
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 dftrain = pd.read_csv('../data/training_dataset.csv')
