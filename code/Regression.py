@@ -1,4 +1,5 @@
 import dateProcess
+import readFile
 
 import pandas as pd
 import numpy as np
@@ -37,37 +38,32 @@ def RSE(y_true, y_predicted):
     return rse
 
 if __name__ == '__main__':
-    dftrain = pd.read_csv('../data/training_dataset.csv')
-
-    for i in range(0, len(dftrain['sqft_lot'])):
-        dftrain['sqft_lot'][i] = 1 / dftrain['sqft_lot'][i]
-
-    popList = ['id', 'date', 'zipcode', 'yr_renovated', 'lat', 'long']
-    for id in popList:
-        dftrain.pop(id)
+    dftrain = readFile.csvFile()
 
     Y = dftrain.pop('price')
     X = sm.add_constant(dftrain)
 
     est = OLSFit(X, Y)
     Y_predict = est.predict(X)
+    print(est.rsquared)
     print(est.summary())
     plt.scatter(Y, Y_predict, s=0.5)
     plt.plot(Y, Y, c='r')
     plt.show()
 
-    # export the .csv file
-    dftest = pd.read_csv('../data/test_dataset.csv')
-    testPopList = ['id', 'date', 'zipcode', 'yr_renovated', 'lat', 'long']
-    for element in popList:
-        dftest.pop(element)
-    dftest = sm.add_constant(dftest)
-    predict = est.predict(dftest)
 
-    dfOutputTest = pd.read_csv('../data/test_dataset.csv')
-    temp = []
-    for each in predict:
-        temp.append(each)
-    dfOutputTest['price'] = temp
-    dfOutputTest = dfOutputTest[['id', 'price']]
-    dfOutputTest.to_csv('PredictPrice.csv', index=False)
+    # export the .csv file
+    # dftest = pd.read_csv('../data/test_dataset.csv')
+    # testPopList = ['id', 'date', 'zipcode', 'yr_renovated', 'lat', 'long']
+    # for element in popList:
+    #     dftest.pop(element)
+    # dftest = sm.add_constant(dftest)
+    # predict = est.predict(dftest)
+    #
+    # dfOutputTest = pd.read_csv('../data/test_dataset.csv')
+    # temp = []
+    # for each in predict:
+    #     temp.append(each)
+    # dfOutputTest['price'] = temp
+    # dfOutputTest = dfOutputTest[['id', 'price']]
+    # dfOutputTest.to_csv('PredictPrice.csv', index=False)

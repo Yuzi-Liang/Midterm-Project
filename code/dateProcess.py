@@ -6,7 +6,6 @@ def dateConvert(date_frame):
     """
     Convert the original date to time difference to 2014.05.01
     """
-
     date_frame = np.array(date_frame)
 
     date0 = datetime.strptime('20140501', "%Y%m%d")

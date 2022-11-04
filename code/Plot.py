@@ -1,24 +1,16 @@
 import dateProcess
+import readFile
 
 import pandas as pd
 import matplotlib
-# matplotlib.use('TkAgg')
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-dftrain = pd.read_csv('../data/training_dataset.csv')
-dftrain['renovated_time'] = dateProcess.renovatedTime(dftrain['date'], dftrain['yr_built'], dftrain['yr_renovated'])
-dftrain['date'] = dateProcess.dateConvert(dftrain['date'])
-dftrain['isRenovated'] = dateProcess.isRenovated(dftrain['yr_renovated'])
-for i in range(0, len(dftrain['sqft_lot'])):
-    dftrain['sqft_lot'][i] = 1/dftrain['sqft_lot'][i]
+dftrain = readFile.csvFile()
 
 describe = dftrain.describe()
-describe.to_csv('summary.csv')
+# describe.to_csv('summary.csv')
 
-predictor_list = ['id', 'date', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot',
-       'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above',
-       'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long',
-       'sqft_living15', 'sqft_lot15']
 axs = [0]*3
 fig1, axs[0] = plt.subplots(nrows=3, ncols=3)
 fig2, axs[1] = plt.subplots(nrows=3, ncols=3)

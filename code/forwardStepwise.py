@@ -1,5 +1,6 @@
 import dateProcess
 import Regression
+import readFile
 
 import pandas as pd
 import statsmodels.api as sm
@@ -13,26 +14,18 @@ def listMinus(l1, l2):
                 l3.remove(i)
     return l3
 
-predictor_list = ['id', 'date', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot',
-       'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above',
-       'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long',
-       'sqft_living15', 'sqft_lot15']
+
 
 sorted_list = []
 R2_list = []
 
-dftrain = pd.read_csv('../data/training_dataset.csv')
-dftrain['date'] = dateProcess.dateConvert(dftrain['date'])
-popList = ['id', 'zipcode']
-for id in popList:
-    dftrain.pop(id)
-predictor_list = listMinus(predictor_list, popList)
+
+dftrain = readFile.csvFile()
+predictor_list = readFile.predictor_list
 Y = dftrain.pop('price')
 
 for step in range(1, len(predictor_list)):
     R2 = [0] * (len(predictor_list) - len(sorted_list))
-
-
 
     for i, p in enumerate(listMinus(predictor_list, sorted_list)):  # pick a best model for each step
 
