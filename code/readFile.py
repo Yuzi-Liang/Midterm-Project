@@ -15,7 +15,7 @@ def trainingFile():
         dftrain['sqft_lot'][i] = 1/dftrain['sqft_lot'][i]
         dftrain['sqft_lot15'][i] = 1/dftrain['sqft_lot15'][i]
 
-    popList = ['id', 'zipcode']
+    popList = ['id', 'zipcode', 'sqft_basement']
     for id in popList:
         dftrain.pop(id)
     return dftrain
@@ -34,7 +34,7 @@ def testFile():
         dftrain['sqft_lot'][i] = 1 / dftrain['sqft_lot'][i]
         dftrain['sqft_lot15'][i] = 1/dftrain['sqft_lot15'][i]
 
-    popList = ['id', 'zipcode']
+    popList = ['id', 'zipcode', 'sqft_basement']
     for id in popList:
         dftrain.pop(id)
     return dftrain
@@ -42,5 +42,5 @@ def testFile():
 
 predictor_list = ['date', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot',
        'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above',
-       'sqft_basement', 'yr_built', 'lat', 'long',
+       'yr_built', 'lat', 'long',
        'sqft_living15', 'sqft_lot15', 'renovated_time', 'isRenovated']
