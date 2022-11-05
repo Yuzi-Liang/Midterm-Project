@@ -30,7 +30,7 @@ def testingFile():
 
     for i in range(0, len(dftrain['sqft_lot'])):
         dftrain['sqft_lot'][i] = 1 / dftrain['sqft_lot'][i]
-        # dftrain['sqft_lot15'][i] = 1/dftrain['sqft_lot15'][i]
+        dftrain['sqft_lot15'][i] = 1/dftrain['sqft_lot15'][i]
 
     popList = ['id', 'zipcode']
     for id in popList:
