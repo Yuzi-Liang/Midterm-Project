@@ -1,6 +1,7 @@
 import numpy as np
 from datetime import *
 
+
 def dateConvert(date_frame):
     """
     Convert the original date to time difference to 2014.05.01
@@ -29,6 +30,7 @@ def renovatedTime(sale_date, yr_built, yr_renovated):
             temp = datetime.strptime(str(yr_built[i]), "%Y")
             output[i] = (datetime.strptime(str(sale_date[i]), "%Y%m%dT000000") - temp).days
     return output.astype(float)
+
 
 def isRenovated(yr_renovated):
     output = np.array([0] * len(yr_renovated))

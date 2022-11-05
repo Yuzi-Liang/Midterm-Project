@@ -4,6 +4,7 @@ import readFile
 import statsmodels.api as sm
 import operator
 
+
 def listMinus(l1, l2):
     l3 = l1[:]
     for i in l2:
