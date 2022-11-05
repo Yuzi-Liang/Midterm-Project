@@ -1,6 +1,7 @@
 import pandas as pd
 import dateProcess
 
+
 def trainingFile():
     dftrain = pd.read_csv('../data/training_dataset.csv')
 
@@ -19,7 +20,8 @@ def trainingFile():
         dftrain.pop(id)
     return dftrain
 
-def testingFile():
+
+def testFile():
     dftrain = pd.read_csv('../data/test_dataset.csv')
 
     # preprocessing
@@ -36,6 +38,7 @@ def testingFile():
     for id in popList:
         dftrain.pop(id)
     return dftrain
+
 
 predictor_list = ['date', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot',
        'floors', 'waterfront', 'view', 'condition', 'grade', 'sqft_above',

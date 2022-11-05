@@ -7,6 +7,7 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
+
 def OLSFit(X, Y):
     """
     - X: Predictors dataframe
@@ -15,6 +16,7 @@ def OLSFit(X, Y):
     est = sm.OLS(Y, X)
     est2 = est.fit()
     return est2
+
 
 def RSS(y_true, y_predicted):
     """
@@ -26,6 +28,7 @@ def RSS(y_true, y_predicted):
     rss = np.sum(np.square(y_true - y_predicted))
     return rss
 
+
 def RSE(y_true, y_predicted):
     """
     - y_true: Actual values
@@ -34,6 +37,7 @@ def RSE(y_true, y_predicted):
     rss = RSS(y_true, y_predicted)
     rse = math.sqrt(rss / (len(y_true) - 2))
     return rse
+
 
 def regressionResult():
     dftrain = readFile.trainingFile()
