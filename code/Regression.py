@@ -1,7 +1,5 @@
-import dateProcess
 import readFile
 
-import pandas as pd
 import numpy as np
 import statsmodels.api as sm
 import math
@@ -37,8 +35,16 @@ def RSE(y_true, y_predicted):
     rse = math.sqrt(rss / (len(y_true) - 2))
     return rse
 
+def regressionResult():
+    dftrain = readFile.trainingFile()
+    Y = dftrain.pop('price')
+    X = sm.add_constant(dftrain)
+    est = OLSFit(X, Y)
+    return est
+
+
 if __name__ == '__main__':
-    dftrain = readFile.csvFile()
+    dftrain = readFile.trainingFile()
 
     Y = dftrain.pop('price')
     X = sm.add_constant(dftrain)

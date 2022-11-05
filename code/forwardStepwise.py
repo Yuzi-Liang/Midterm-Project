@@ -1,8 +1,6 @@
-import dateProcess
 import Regression
 import readFile
 
-import pandas as pd
 import statsmodels.api as sm
 import operator
 
@@ -15,16 +13,14 @@ def listMinus(l1, l2):
     return l3
 
 
-
 sorted_list = []
 R2_list = []
 
-
-dftrain = readFile.csvFile()
+dftrain = readFile.trainingFile()
 predictor_list = readFile.predictor_list
 Y = dftrain.pop('price')
 
-for step in range(1, len(predictor_list)):
+for step in range(0, len(predictor_list)):
     R2 = [0] * (len(predictor_list) - len(sorted_list))
 
     for i, p in enumerate(listMinus(predictor_list, sorted_list)):  # pick a best model for each step
@@ -44,8 +40,6 @@ for step in range(1, len(predictor_list)):
 
     sorted_list.append(listMinus(predictor_list, sorted_list)[max_index])
     R2_list.append(max_number)
-
-
 
 print(sorted_list)
 print(R2_list)

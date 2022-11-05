@@ -1,12 +1,11 @@
-import dateProcess
 import readFile
 
-import pandas as pd
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-dftrain = readFile.csvFile()
+dftrain = readFile.trainingFile()
+predictor_list = readFile.predictor_list
 
 describe = dftrain.describe()
 # describe.to_csv('summary.csv')
